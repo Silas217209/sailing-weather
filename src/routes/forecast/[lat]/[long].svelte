@@ -1685,7 +1685,7 @@
             <div class="stat-value">{ weatherdata.current_weather.winddirection }°</div>
         </div>
 
-        <div class="stat place-items-center p-0">
+        <div class="stat place-items-center p-0 m-auto">
             <div class="stat-figure">
                 <div class="w-28">
                     <img
@@ -1704,9 +1704,9 @@
     </div>
 
     <div class="hidden lg:flex lg:flex-col lg:items-center">
-        <Forecast data={weatherdata} day=0 class="my-6"/>
-        <Forecast data={weatherdata} day=1 class="my-6"/>
-        <Forecast data={weatherdata} day=2 class="my-6"/>
+        <Forecast data={weatherdata} day={0} class="my-6"/>
+        <Forecast data={weatherdata} day={1} class="my-6"/>
+        <Forecast data={weatherdata} day={2} class="my-6"/>
         <div class="alert alert-info shadow-lg max-w-xl m-6">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
