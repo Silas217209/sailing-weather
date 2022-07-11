@@ -1,0 +1,16 @@
+name = "weather"
+type = "javascript"
+account_id = "83be7e94b4c9fdcf6563470c6ed1c68d"
+workers_dev = true
+route = ""
+zone_id = ""
+compatibility_date = "2022-04-07"
+main = "./.cloudflare/worker.js"
+
+
+[site]
+bucket = ".output/public"
+
+[build]
+command = "pnpm run build"
+upload.format = "service-worker"

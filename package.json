@@ -1,7 +1,8 @@
 {
 	"name": "sailing-weather",
 	"version": "0.0.1",
-	"scripts": {
+	"main": "./.cloudflare/worker.js",
+		"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
 		"package": "svelte-kit package",
@@ -14,8 +15,10 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.47",
 		"@sveltejs/kit": "next",
 		"autoprefixer": "^10.4.7",
+		"daisyui": "^2.19.0",
 		"postcss": "^8.4.14",
 		"prettier": "^2.6.2",
 		"prettier-plugin-svelte": "^2.7.0",

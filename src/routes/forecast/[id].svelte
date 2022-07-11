@@ -178,7 +178,7 @@
         <div class="flex flex-col items-center w-full lg:hidden">
             <MobileForecast data={weatherdata} day=0/>
             <MobileForecast data={weatherdata} day=1/>
-            <MobileForecast data={weatherdata} day=2"/>
+            <MobileForecast data={weatherdata} day=2/>
             <div class="alert alert-info shadow-lg max-w-xl m-6">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
