@@ -1,14 +1,20 @@
 <script context="module">
 	export async function load({ params, fetch }) {
-		const id = params.id;
-		const url = `https://geocoding-api.open-meteo.com/v1/get?id=${id}`;
-		const loc = await fetch(url);
-		return {
-			status: loc.status,
-			props: {
-				locationdata: loc.ok && (await loc.json())
+		try {
+			const id = params.id;
+			const url = `https://geocoding-api.open-meteo.com/v1/get?id=${id}`;
+			const loc = await fetch(url);
+			return {
+				status: loc.status,
+				props: {
+					locationdata: loc.ok && (await loc.json())
+				}
+			};
+		} catch (e) {
+			return {
+				status: 404,
 			}
-		};
+		}
 	}
 </script>
 
@@ -155,7 +161,10 @@
 	<meta property="og:title" content={$t('all.heading') + title} />
 	<meta property="og:url" content={'https://www.sailing-weather.de' + route} />
 	<meta property="og:description" content={$t('all.title') + title} />
-	<meta property="twitter:url" content={'https://www.sailing-weather.de/' + $page.params.lang + route} />
+	<meta
+		property="twitter:url"
+		content={'https://www.sailing-weather.de/' + $page.params.lang + route}
+	/>
 	<meta property="twitter:title" content={$t('all.heading') + title} />
 	<meta property="twitter:description" content={$t('all.title') + title} />
 </svelte:head>
@@ -183,7 +192,10 @@
 		<div class=" max-w-xl mb-2 stats stats-vertical md:stats-horizontal shadow">
 			<div class="stat place-items-center">
 				<div class="stat-title">{$t('all.wind')}</div>
-				<div class="stat-value">{Math.round(weatherdata.current_weather.windspeed)}kt</div>
+				<div class="stat-value">
+					{Math.round(weatherdata.current_weather.windspeed) +
+						($page.params.lang === 'fr' ? 'nd' : 'kt')}
+				</div>
 			</div>
 			<div class="stat place-items-center">
 				<div class="stat-title">{$t('all.winddir')}</div>

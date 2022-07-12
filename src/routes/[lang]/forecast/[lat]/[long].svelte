@@ -1678,7 +1678,7 @@
     <div class=" max-w-xl mb-2 stats stats-vertical md:stats-horizontal shadow">
         <div class="stat place-items-center">
             <div class="stat-title">{$t('all.wind')}</div>
-            <div class="stat-value">{ Math.round(weatherdata.current_weather.windspeed) }kt
+            <div class="stat-value">{ Math.round(weatherdata.current_weather.windspeed) + ($page.params.lang === "fr" ? "nd": "kt")}
             </div>
         </div>
         <div class="stat place-items-center">

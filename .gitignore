@@ -9,3 +9,4 @@ node_modules
 /.cloudflare
 /.output
 /.idea
+/scripts

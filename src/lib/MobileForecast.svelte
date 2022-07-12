@@ -1,5 +1,5 @@
 <script lang="ts">
-
+    import { page } from "$app/stores";
 
     export let data = {
         "latitude": 52.760002,
@@ -1791,11 +1791,11 @@
                     </svg>
                 </div>
                 <p class="mr-1 ml-1">
-                    {Math.round(item).toString().padStart(2, '0')}kt
+                    {Math.round(item).toString().padStart(2, '0') + ($page.params.lang === "fr" ? "nd": "kt")}
                 </p>
                 <p>-</p>
                 <p class="w-10 ml-1 mr-3">
-                    {Math.round(windgusts[index]).toString().padStart(2,'0')}kt
+                    {Math.round(windgusts[index]).toString().padStart(2,'0') + ($page.params.lang === "fr" ? "nd": "kt")}
                 </p>
                 <p class="w-10 mr-3" style="'color:' + picktempcolor(temps[index])">
                     { Math.round(temps[index])}°C

@@ -564,8 +564,8 @@
 					<div class="gust-example w-5 rounded-md mr-2" style={'height:' + getvalue(70) + 'px;'} />
 				</div>
 				<div class="divider p-0 m-0" />
-				<p class="mr-2 h-8">{$t('all.wind')} kn</p>
-				<p class="mr-2 h-8">{$t('all.windgusts')} kn</p>
+				<p class="mr-2 h-8">{$t('all.wind') + ($page.params.lang === "fr" ? "nd": "kt")}</p>
+				<p class="mr-2 h-8">{$t('all.windgusts') + ($page.params.lang === "fr" ? "nd": "kt")}</p>
 				<div class="divider p-0 m-0" />
 				<p class="mr-2 w-max h-8">{$t('all.temperature')} °C</p>
 				<p class="whitespace-nowrap mr-2 h-6">{$t('all.precipitation')} mm</p>
