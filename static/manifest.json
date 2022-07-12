@@ -449,7 +449,8 @@
     },
     {
       "src": "appicons/ios/512.png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "maskable"
     },
     {
       "src": "appicons/ios/1024.png",
