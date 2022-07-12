@@ -152,12 +152,12 @@
 
 <svelte:head>
 	<title>Wetter für {title}</title>
-	<meta property="og:title" content={'Wetter für ' + title} />
+	<meta property="og:title" content={$t('all.heading') + title} />
 	<meta property="og:url" content={'https://www.sailing-weather.de' + route} />
-	<meta property="og:description" content={'Die beste Wettervorhersage für ' + title} />
-	<meta property="twitter:url" content={'https://www.sailing-weather.de' + route} />
-	<meta property="twitter:title" content={'Wetter für ' + title} />
-	<meta property="twitter:description" content={'Die beste Wettervorhersage für ' + title} />
+	<meta property="og:description" content={$t('all.title') + title} />
+	<meta property="twitter:url" content={'https://www.sailing-weather.de/' + $page.params.lang + route} />
+	<meta property="twitter:title" content={$t('all.heading') + title} />
+	<meta property="twitter:description" content={$t('all.title') + title} />
 </svelte:head>
 
 <div class="w-full flex flex-col items-center">
