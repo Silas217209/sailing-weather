@@ -16,6 +16,7 @@
     import Forecast from "$lib/Forecast.svelte";
     import MobileForecast from "$lib/MobileForecast.svelte";
     import {page} from '$app/stores'
+    import {t} from '$lib/translations'
 
     const lat = $page.params.lat
     const long = $page.params.long
@@ -1663,30 +1664,30 @@
 </script>
 <svelte:head>
     <title>Wetter für { title }</title>
-    <meta name="og:title" content={'Wetter für ' + title}/>
-    <meta name="og:url" content={'https://www.sailing-weather.de' + route}/>
-    <meta name="og:description" content={'Die beste Wettervorhersage für ' + title}/>
+    <meta property="og:title" content={'Wetter für ' + title}/>
+    <meta property="og:url" content={'https://www.sailing-weather.de' + route}/>
+    <meta property="og:description" content={'Die beste Wettervorhersage für ' + title}/>
     <meta property="twitter:url" content={'https://www.sailing-weather.de' + route}/>
     <meta property="twitter:title" content={'Wetter für ' + title}/>
     <meta property="twitter:description" content={'Die beste Wettervorhersage für ' + title}/>
 </svelte:head>
 
 <div class="w-full flex flex-col items-center">
-    <h1 class="text-2xl mb-1">Wetter für</h1>
+    <h1 class="text-2xl mb-1">{$t('all.heading')}</h1>
     <h1 class="text-2xl mb-2">{ title }</h1>
     <div class=" max-w-xl mb-2 stats stats-vertical md:stats-horizontal shadow">
         <div class="stat place-items-center">
-            <div class="stat-title">Wind</div>
+            <div class="stat-title">{$t('all.wind')}</div>
             <div class="stat-value">{ Math.round(weatherdata.current_weather.windspeed) }kt
             </div>
         </div>
         <div class="stat place-items-center">
-            <div class="stat-title">Windrichtung</div>
+            <div class="stat-title">{$t('all.winddir')}</div>
             <div class="stat-value">{ weatherdata.current_weather.winddirection }°</div>
         </div>
 
-        <div class="stat place-items-center p-0 m-auto">
-            <div class="stat-figure">
+        <div class="stat flex items-center justify-center p-0">
+            <div class="stat-figure m-auto">
                 <div class="w-28">
                     <img
                             src={geticon(weatherdata.current_weather.weathercode, ((new Date(weatherdata.current_weather.time).getHours()) < 7 || (new Date(weatherdata.current_weather.time).getHours()) > 21), true)}
@@ -1697,7 +1698,7 @@
         </div>
 
         <div class="stat place-items-center">
-            <div class="stat-title">Temperatur</div>
+            <div class="stat-title">{$t('all.temperature')}</div>
             <div class="stat-value">{ Math.round(weatherdata.current_weather.temperature) }°C</div>
         </div>
 
@@ -1714,19 +1715,18 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <span>Vorhersagen von mehr als drei Tagen sind ungenau und die Wahrscheinlichkeit einer größeren Abweichung
-            ist hoch!</span>
+                <span>{$t('all.warning')}</span>
             </div>
         </div>
-        <Forecast data={weatherdata} day=3 class="my-6"/>
-        <Forecast data={weatherdata} day=4 class="my-6"/>
-        <Forecast data={weatherdata} day=5 class="my-6"/>
-        <Forecast data={weatherdata} day=6 class="my-6"/>
+        <Forecast data={weatherdata} day={3} class="my-6"/>
+        <Forecast data={weatherdata} day={4} class="my-6"/>
+        <Forecast data={weatherdata} day={5} class="my-6"/>
+        <Forecast data={weatherdata} day={6} class="my-6"/>
     </div>
     <div class="flex flex-col items-center w-full lg:hidden">
-        <MobileForecast data={weatherdata} day=0 class="my-6"/>
-        <MobileForecast data={weatherdata} day=1 class="my-6"/>
-        <MobileForecast data={weatherdata} day=2 class="my-6"/>
+        <MobileForecast data={weatherdata} day={0} class="my-6"/>
+        <MobileForecast data={weatherdata} day={1} class="my-6"/>
+        <MobileForecast data={weatherdata} day={2} class="my-6"/>
         <div class="alert alert-info shadow-lg max-w-xl m-6">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -1734,13 +1734,12 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <span>Vorhersagen von mehr als drei Tagen sind ungenau und die Wahrscheinlichkeit einer größeren Abweichung
-            ist hoch!</span>
+                <span>{$t('all.warning')}</span>
             </div>
         </div>
-        <MobileForecast data={weatherdata} day=3 class="my-6"/>
-        <MobileForecast data={weatherdata} day=4 class="my-6"/>
-        <MobileForecast data={weatherdata} day=5 class="my-6"/>
-        <MobileForecast data={weatherdata} day=6 class="my-6"/>
+        <MobileForecast data={weatherdata} day={3} class="my-6"/>
+        <MobileForecast data={weatherdata} day={4} class="my-6"/>
+        <MobileForecast data={weatherdata} day={5} class="my-6"/>
+        <MobileForecast data={weatherdata} day={6} class="my-6"/>
     </div>
 </div>

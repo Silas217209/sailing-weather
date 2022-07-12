@@ -204,15 +204,6 @@
   </div>
 </template>
 <style scoped>
-body {
-  display: block;
-  margin: 8px
-}
-
-body:-webkit-full-page-media {
-  background-color: rgb(0, 0, 0)
-}
-
 p {
   display: block;
   margin-bottom: 1rem;

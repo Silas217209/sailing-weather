@@ -1,0 +1,19 @@
+{
+  "site-description": "The best place to get weather information for Germany and the rest of the world",
+  "weather": "weather",
+  "site-title": "Weather for Germany and the World",
+  "page-title": "Weather",
+  "title": "The best weather forecast for ",
+  "heading": "Weather for",
+  "wind": "wind",
+  "windgusts": "wind gusts",
+  "winddir": "wind direction",
+  "temperature": "temperature",
+  "warning": "Predictions of more than three days are inaccurate and the probability of a larger deviation is high!",
+  "time": "time",
+  "precipitation": "precipitation",
+  "search": "Search",
+  "name": "name",
+  "details": "details",
+  "country": "country"
+}

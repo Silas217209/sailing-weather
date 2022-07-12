@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de" data-theme="dark">
+<html data-theme="dark">
 <head>
     <meta charset="utf-8"/>
     <link href="%sveltekit.assets%/favicon.svg" rel="icon"/>
@@ -7,15 +7,6 @@
     %sveltekit.head%
 </head>
 <body>
-<div>%sveltekit.body%</div>
-<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-<script>
-    kofiWidgetOverlay.draw('sailingweather', {
-        'type': 'floating-chat',
-        'floating-chat.donateButton.text': 'Support me',
-        'floating-chat.donateButton.background-color': '#794bc4',
-        'floating-chat.donateButton.text-color': '#fff'
-    });
-</script>
+%sveltekit.body%
 </body>
 </html>

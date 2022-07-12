@@ -1,0 +1,19 @@
+{
+  "site-description": "Le meilleur endroit pour trouver des données météo pour la France et le reste du monde",
+  "weather": "Météo",
+  "site-title": "Météo pour l'Allemagne et le monde entier",
+  "page-title": "Météo",
+  "title": "Les meilleures prévisions pour  ",
+  "heading": "Météo pour",
+  "wind": "Vent",
+  "windgusts": "Raffales",
+  "winddir": "Direction du vent",
+  "temperature": "Température",
+  "warning": "Les prévisions À plus de trois jours ne sont pas précises et la probabilité que la météo change est grande !",
+  "time": "Heure",
+  "precipitation": "Précipitations",
+  "search": "Recherche",
+  "name": "nom",
+  "details": "détails",
+  "country": "pays"
+}

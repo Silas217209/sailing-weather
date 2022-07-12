@@ -1,0 +1,19 @@
+{
+  "site-description": "Der Beste Ort um Wetter- und Winddaten in Deutschland und in der ganzen Welt abzurufen",
+  "weather": "Wetter",
+  "site-title": "Wetter für Deutschland und die Welt",
+  "page-title": "Wetter",
+  "title": "Die Beste Wettervorhersage für  ",
+  "heading": "Wetter für",
+  "wind": "Wind",
+  "windgusts": "Windböen",
+  "winddir": "Windrichtung",
+  "temperature": "Temperatur",
+  "warning": "Vorhersagen von mehr als drei Tagen sind ungenau und die Wahrscheinlichkeit einer größeren Abweichung ist hoch!",
+  "time": "Uhrzeit",
+  "precipitation": "Niederschlag",
+  "search": "Suche",
+  "name": "Name",
+  "details": "Details",
+  "country": "Land"
+}

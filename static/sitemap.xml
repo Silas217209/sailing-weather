@@ -3,22 +3,18 @@
 	<url>
 		<loc>https://sailing-weather.de/</loc>
 		<priority>1.0</priority>
-		<lastmod>2022-07-07</lastmod>
 	</url>
 	<url>
 		<loc>https://sailing-weather.de/impressum</loc>
 		<priority>0.40</priority>
-		<lastmod>2022-07-07</lastmod>
 	</url>
 	<url>
 		<loc>https://sailing-weather.de/datenschutz</loc>
 		<priority>0.40</priority>
-		<lastmod>2022-07-07</lastmod>
 	</url>
 	<url>
 		<loc>https://sailing-weather.de/haftungsauschluss</loc>
 		<priority>0.40</priority>
-		<lastmod>2022-07-07</lastmod>
 	</url>
 	<url>
 		<loc>https://sailing-weather.de/forecast/3247449</loc>
