@@ -27,22 +27,6 @@
 		content="Wind, Segeln, windvorhersage, Wettervorhersage, sailing-weather, sailing, weather, forecast"
 	/>
 	<meta name="description" content={$t('all.site-description')} />
-	<link rel="manifest" crossorigin="use-credentials" href="/manifest.json" />
-
-	<meta property="og:type" content="website" />
-	<meta property="og:image" content="https://sailing-weather.de/preview.png" />
-	<meta property="og:image:width" content="1200" />
-	<meta property="og:image:height" content="628" />
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:image" content="https://sailing-weather.de/preview.png" />
-
-	{#each [16, 20, 29, 32, 40, 57, 58, 60, 64, 72, 76, 80, 87, 100, 114, 120, 128, 144, 152, 167, 180, 192, 256, 512, 1024] as s}
-		<link
-			rel="apple-touch-icon"
-			sizes={s + 'x' + s}
-			href={'/appicons/ios/' + s + '.png'}
-		/>
-	{/each}
 </svelte:head>
 <div class="h-full">
 	<header class="navbar bg-base-100">
