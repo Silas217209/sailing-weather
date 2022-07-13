@@ -39,6 +39,19 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Sailing Weather | {$t('all.search')}</title>
+	<meta property="og:title" content={'Sailing Weather ' + $t('all.search')} />
+	<meta property="og:url" content={'https://www.sailing-weather.de' + $page.url.pathname} />
+	<meta property="og:description" content={$t('all.search-description')} />
+	<meta
+		property="twitter:url"
+		content={'https://www.sailing-weather.de' + $page.url.pathname}
+	/>
+	<meta property="twitter:title" content={'Sailing Weather ' + $t('all.search')} />
+	<meta property="twitter:description" content={$t('all.search-description')} />
+</svelte:head>
+
 <div class="flex justify-center w-full flex-col items-center">
 	<div class="m-8 flex flex-col w-full justify-center items-center">
 		<div class="flex">

@@ -1,7 +1,7 @@
 <script context="module">
 	import { locale, loadTranslations } from '$lib/translations';
-	import kofi from '$lib/assets/kofi.webp'
-	
+	import kofi from '$lib/assets/kofi.webp';
+
 	// @ts-ignore
 	export const load = async ({ url, params }) => {
 		const { pathname } = url;
@@ -11,7 +11,12 @@
 
 		await loadTranslations(initLocale, pathname); // keep this just before the `return`
 
-		return {};
+		return {
+			cache: {
+				maxage: 600,
+				private: false
+			}
+		};
 	};
 </script>
 
@@ -36,8 +41,8 @@
 		<div class="flex-2">
 			<a href="https://ko-fi.com/Z8Z1DR6HR" target="_blank">
 				<img
-					height="36px"
-					width="230.77px"
+					height="36"
+					width="231"
 					style="border:0px;height:36px;"
 					src={kofi}
 					alt="Buy Me a Coffee at ko-fi.com"

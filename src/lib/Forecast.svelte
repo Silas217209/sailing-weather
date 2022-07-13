@@ -447,7 +447,7 @@
 
 	function getfontcolor(rgb: string | number[]): string {
 		var contrastratio = contrast([0, 0, 0], rgb);
-		if (contrastratio > 6) {
+		if (contrastratio > 5.8) {
 			return 'rgb(0, 0, 0)';
 		} else {
 			return 'rgb(255, 255, 255)';
@@ -557,15 +557,15 @@
 		<div class="flex items-end aspect-auto justify-center">
 			<div class="flex flex-col items-end">
 				<p class="mr-2">{$t('all.time')}</p>
-				<p class="mr-2 h-4" style="height: 18px">{$t('all.weather')}</p>
+				<p class="mr-2 h-4" style="height: 31px">{$t('all.weather')}</p>
 				<div class="divider p-0 m-0" />
 				<p class="h-7 mr-2">{$t('all.winddir')}</p>
-				<div style="height: 210px" class="flex justify-end items-end flex-row">
+				<span style="height: 210px" class="flex justify-end items-end flex-row">
 					<div class="gust-example w-5 rounded-md mr-2" style={'height:' + getvalue(70) + 'px;'} />
-				</div>
+				</span>
 				<div class="divider p-0 m-0" />
-				<p class="mr-2 h-8">{$t('all.wind') + ($page.params.lang === "fr" ? "nd": "kt")}</p>
-				<p class="mr-2 h-8">{$t('all.windgusts') + ($page.params.lang === "fr" ? "nd": "kt")}</p>
+				<p class="mr-2 h-8">{$t('all.wind') + ($page.params.lang === 'fr' ? 'nd' : 'kt')}</p>
+				<p class="mr-2 h-8">{$t('all.windgusts') + ($page.params.lang === 'fr' ? 'nd' : 'kt')}</p>
 				<div class="divider p-0 m-0" />
 				<p class="mr-2 w-max h-8">{$t('all.temperature')} °C</p>
 				<p class="whitespace-nowrap mr-2 h-6">{$t('all.precipitation')} mm</p>
@@ -579,33 +579,23 @@
 				>
 					<p>{new Date(timestamps[index]).getHours().toString().padStart(2, '0')}</p>
 					<img
+						width="31"
+						height="31"
 						src={geticon(
 							weathercodes[index],
 							new Date(timestamps[index]).getHours() < 7 ||
 								new Date(timestamps[index]).getHours() > 21
 						)}
 						alt="Icon to display current Weather"
-						class="w-8"
 					/>
 					<div class="divider p-0 m-0" />
-					<div class="tooltip" data-tip={winddirs[index] + '°'}>
-						<svg
-							style={'transform: rotate(' + winddirs[index] + 'deg);'}
-							class="w-7 h-7"
-							data-name="Ebene 1"
-							xmlns="http://www.w3.org/2000/svg"
-							width="233.17"
-							height="233.17"
-							viewBox="0 0 233.17 233.17"
-						>
-							<g data-name="Arrow">
-								<path
-									class="fill-slate-800 dark:fill-slate-300"
-									d="M116.96,150.57c-15.16,7.13-30.22,14.22-45.28,21.3l-.42-.41c15.13-36.39,30.26-72.78,45.42-109.26,1.14,1.13,45.44,107.3,45.79,109.79-15.27-7.19-30.32-14.28-45.5-21.43Zm-35.19,10.04l.26,.27c11.56-5.45,23.13-10.9,34.63-16.33V77.48l-.29-.06c-11.53,27.73-23.06,55.46-34.6,83.19Z"
-								/>
-							</g>
-						</svg>
-					</div>
+					<img
+						alt="winddirection"
+						src="/weathericons/arrow.svg"
+						class="tooltip"
+						data-tip={winddirs[index] + '°'}
+						style={`transform: rotate(${winddirs[index]}deg)`}
+					/>
 					<div style="height: 210px" class="flex justify-end flex-col">
 						<div
 							class="gust w-5 rounded-t-full"
@@ -621,29 +611,38 @@
 						/>
 					</div>
 					<div class="divider p-0 m-0" />
-					<div class="p-1 m-0 w-full" style={'background-color:' + pickcolor(item) + ';'}>
-						<p style={'color:' + getfontcolor(pickcolor(item, false)) + ';'}>
-							{Math.round(item).toString().padStart(2, '0')}
-						</p>
-					</div>
+					<p
+						class="p-1 m-0 w-full text-center"
+						style={'color:' +
+							getfontcolor(pickcolor(item, false)) +
+							'; background-color:' +
+							pickcolor(item) +
+							';'}
+					>
+						{Math.round(item).toString().padStart(2, '0')}
+					</p>
 
-					<div
-						class="p-1 m-0 w-full"
-						style={'background-color:' + pickcolor(windgusts[index]) + ';'}
+					<p
+						class="p-1 m-0 w-full text-center"
+						style={'color:' +
+							getfontcolor(pickcolor(windgusts[index], false)) +
+							'; background-color:' +
+							pickcolor(windgusts[index]) +
+							';'}
 					>
-						<p style={'color:' + getfontcolor(pickcolor(windgusts[index], false)) + ';'}>
-							{Math.round(windgusts[index]).toString().padStart(2, '0')}
-						</p>
-					</div>
+						{Math.round(windgusts[index]).toString().padStart(2, '0')}
+					</p>
 					<div class="divider p-0 m-0" />
-					<div
-						class="flex items-center justify-center p-1 w-full text-black"
-						style={'background-color:' + picktempcolor(temps[index]) + ';'}
+					<p
+						class="p-1 w-full text-black text-center"
+						style={'color:' +
+							getfontcolor(picktempcolor(temps[index], false)) +
+							'; background-color:' +
+							picktempcolor(temps[index]) +
+							';'}
 					>
-						<p style={'color:' + getfontcolor(picktempcolor(temps[index], false)) + ';'}>
-							{Math.round(temps[index])}°
-						</p>
-					</div>
+						{Math.round(temps[index])}°
+					</p>
 					<p class="text-blue-800 dark:text-blue-400">{precipitation[index]}</p>
 				</div>
 			{/each}

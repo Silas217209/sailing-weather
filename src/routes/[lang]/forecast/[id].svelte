@@ -22,6 +22,7 @@
 	import { onMount } from 'svelte';
 	import Forecast from '$lib/Forecast.svelte';
 	import MobileForecast from '$lib/MobileForecast.svelte';
+	import Stats from '$lib/Stats.svelte';
 	import { page } from '$app/stores';
 	import { t } from '$lib/translations';
 
@@ -189,40 +190,7 @@
 	{:else}
 		<h1 class="text-2xl mb-1">{$t('all.heading')}</h1>
 		<h1 class="text-2xl mb-2">{title}</h1>
-		<div class=" max-w-xl mb-2 stats stats-vertical md:stats-horizontal shadow">
-			<div class="stat place-items-center">
-				<div class="stat-title">{$t('all.wind')}</div>
-				<div class="stat-value">
-					{Math.round(weatherdata.current_weather.windspeed) +
-						($page.params.lang === 'fr' ? 'nd' : 'kt')}
-				</div>
-			</div>
-			<div class="stat place-items-center">
-				<div class="stat-title">{$t('all.winddir')}</div>
-				<div class="stat-value">{weatherdata.current_weather.winddirection}°</div>
-			</div>
-
-			<div class="stat flex items-center justify-center p-0">
-				<div class="stat-figure m-auto">
-					<div class="w-28">
-						<img
-							src={geticon(
-								weatherdata.current_weather.weathercode,
-								new Date(weatherdata.current_weather.time).getHours() < 7 ||
-									new Date(weatherdata.current_weather.time).getHours() > 21,
-								true
-							)}
-							alt="Icon to display current Weather"
-						/>
-					</div>
-				</div>
-			</div>
-
-			<div class="stat place-items-center">
-				<div class="stat-title">{$t('all.temperature')}</div>
-				<div class="stat-value">{Math.round(weatherdata.current_weather.temperature)}°C</div>
-			</div>
-		</div>
+		<Stats weatherdata={weatherdata} />
 
 		<div class="hidden lg:flex lg:flex-col lg:items-center">
 			<Forecast data={weatherdata} day={0} class="my-6" />

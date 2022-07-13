@@ -15,5 +15,6 @@
   "search": "Suche",
   "name": "Name",
   "details": "Details",
-  "country": "Land"
+  "country": "Land",
+  "search-description": "Ortssuche für Sailing Weather"
 }
