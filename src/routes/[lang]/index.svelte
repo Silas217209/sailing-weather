@@ -137,6 +137,8 @@
 								<td>{item.admin1}</td>
 								<td>{item.country}</td>
 							</tr>
+							{:else}
+							<p>Suche nach einer Stadt oder ermittle deine aktuelle Position</p>
 						{/each}
 					</tbody>
 				</table>

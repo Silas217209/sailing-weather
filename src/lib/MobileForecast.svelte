@@ -526,13 +526,13 @@
 					<img
 						src={geticon(weathercodes[index], index < 7 || index > 21)}
 						alt="Icon to display current Weather"
-						class="weathericon"
+						class="weathericon h-full"
 					/>
 				</div>
 				<img
 					alt="winddirection"
 					src="/weathericons/arrow.svg"
-					class="ml-6 flex items-center justify-center tooltip"
+					class="ml-6 flex items-center justify-center tooltip h-1/2"
 					data-tip={winddirs[index] + '°'}
 					style={`transform: rotate(${winddirs[index]}deg)`}
 				/>
