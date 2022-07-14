@@ -1679,42 +1679,61 @@
     <h1 class="text-2xl mb-2">{ title }</h1>
     <Stats weatherdata={weatherdata} />
 
-    <div class="hidden lg:flex lg:flex-col lg:items-center">
-        <Forecast data={weatherdata} day={0} class="my-6"/>
-        <Forecast data={weatherdata} day={1} class="my-6"/>
-        <Forecast data={weatherdata} day={2} class="my-6"/>
-        <div class="alert alert-info shadow-lg max-w-xl m-6">
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                     class="stroke-current flex-shrink-0 w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <span>{$t('all.warning')}</span>
-            </div>
-        </div>
-        <Forecast data={weatherdata} day={3} class="my-6"/>
-        <Forecast data={weatherdata} day={4} class="my-6"/>
-        <Forecast data={weatherdata} day={5} class="my-6"/>
-        <Forecast data={weatherdata} day={6} class="my-6"/>
-    </div>
-    <div class="flex flex-col items-center w-full lg:hidden">
-        <MobileForecast data={weatherdata} day={0} class="my-6"/>
-        <MobileForecast data={weatherdata} day={1} class="my-6"/>
-        <MobileForecast data={weatherdata} day={2} class="my-6"/>
-        <div class="alert alert-info shadow-lg max-w-xl m-6">
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                     class="stroke-current flex-shrink-0 w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <span>{$t('all.warning')}</span>
-            </div>
-        </div>
-        <MobileForecast data={weatherdata} day={3} class="my-6"/>
-        <MobileForecast data={weatherdata} day={4} class="my-6"/>
-        <MobileForecast data={weatherdata} day={5} class="my-6"/>
-        <MobileForecast data={weatherdata} day={6} class="my-6"/>
-    </div>
+    {#if width > 900}
+			<div class="flex flex-col items-center">
+				<Forecast data={weatherdata} day={0} class="my-6" />
+				<Forecast data={weatherdata} day={1} class="my-6" />
+				<Forecast data={weatherdata} day={2} class="my-6" />
+				<div class="alert alert-info shadow-lg max-w-xl m-6">
+					<div>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							class="stroke-current flex-shrink-0 w-6 h-6"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+							/>
+						</svg>
+						<span>{$t('all.warning')}</span>
+					</div>
+				</div>
+				<Forecast data={weatherdata} day={3} class="my-6" />
+				<Forecast data={weatherdata} day={4} class="my-6" />
+				<Forecast data={weatherdata} day={5} class="my-6" />
+				<Forecast data={weatherdata} day={6} class="my-6" />
+			</div>
+		{:else}
+			<div class="flex flex-col items-center w-full">
+				<MobileForecast data={weatherdata} day={0} class="my-6" />
+				<MobileForecast data={weatherdata} day={1} class="my-6" />
+				<MobileForecast data={weatherdata} day={2} class="my-6" />
+				<div class="alert alert-info shadow-lg max-w-xl m-6">
+					<div>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							class="stroke-current flex-shrink-0 w-6 h-6"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+							/>
+						</svg>
+						<span>{$t('all.warning')}</span>
+					</div>
+				</div>
+				<MobileForecast data={weatherdata} day={3} class="my-6" />
+				<MobileForecast data={weatherdata} day={4} class="my-6" />
+				<MobileForecast data={weatherdata} day={5} class="my-6" />
+				<MobileForecast data={weatherdata} day={6} class="my-6" />
+			</div>
+		{/if}
 </div>
