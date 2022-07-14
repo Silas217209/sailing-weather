@@ -13,7 +13,7 @@
 	}
 </script>
 
-<script>
+<script lang=ts>
 	import Stats from '$lib/Stats.svelte';
 
 	import Forecast from '$lib/Forecast.svelte';
@@ -335,6 +335,8 @@
 		}
 	};
 
+    let width: number
+
 	function geticon(weathercode, night, animated = false) {
 		let baseurl;
 		let fileext = '.webp';
@@ -413,6 +415,8 @@
 		return baseurl + icon + fileext;
 	}
 </script>
+<svelte:window bind:innerWidth={width} />
+
 
 <svelte:head>
 	<title>Wetter für {title}</title>
