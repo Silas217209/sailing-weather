@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { t } from '$lib/translations';
-	import { browser } from '$app/env';
-	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 
 	export let data: {
@@ -476,15 +474,15 @@
 		let baseurl: string;
 		let fileext: string = '.webp';
 		if (night) {
-			baseurl = '/weathericons/static/night/';
+			baseurl = '/weathericons/filled/static/night/';
 			if (animated) {
-				baseurl = '/weathericons/animated/night/';
+				baseurl = '/weathericons/filled/animated/night/';
 				fileext = '.svg';
 			}
 		} else {
-			baseurl = '/weathericons/static/day/';
+			baseurl = '/weathericons/filled/static/day/';
 			if (animated) {
-				baseurl = '/weathericons/animated/day/';
+				baseurl = '/weathericons/filled/animated/day/';
 				fileext = '.svg';
 			}
 		}
@@ -572,10 +570,10 @@
 			</div>
 			{#each windspeeds as item, index}
 				<div
-					class={'flex flex-col transition-all hover:scale-110 hover:bg-gray-50 dark:hover:bg-gray-700 items-center' +
+					class={'aspect-auto flex flex-col transition-all hover:scale-110 hover:bg-gray-700 items-center' +
 						' ' +
-						(index < 7 || index > 21 ? 'bg-gray-100 dark:bg-gray-800' : '') +
-						(index === hour && day === 0 ? ' bg-blue-50 hover:bg-blue-100 dark:bg-slate-700' : '')}
+						(index < 7 || index > 21 ? 'bg-gray-800' : '') +
+						(index === hour && day === 0 ? ' hover:bg-blue-100 bg-slate-700' : '')}
 				>
 					<p>{new Date(timestamps[index]).getHours().toString().padStart(2, '0')}</p>
 					<img
@@ -643,14 +641,14 @@
 					>
 						{Math.round(temps[index])}°
 					</p>
-					<p class="text-blue-800 dark:text-blue-400">{precipitation[index]}</p>
+					<p class="text-blue-400">{precipitation[index]}</p>
 				</div>
 			{/each}
 		</div>
 	</div>
 </template>
 
-<style scoped>
+<style>
 	.gust-example {
 		background: rgb(0, 0, 255);
 		background: linear-gradient(

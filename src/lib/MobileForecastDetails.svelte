@@ -377,15 +377,15 @@
 		let baseurl: string;
 		let fileext: string = '.webp';
 		if (night) {
-			baseurl = '/weathericons/static/night/';
+			baseurl = '/weathericons/filled/static/night/';
 			if (animated) {
-				baseurl = '/weathericons/animated/night/';
+				baseurl = '/weathericons/filled/animated/night/';
 				fileext = '.svg';
 			}
 		} else {
-			baseurl = '/weathericons/static/day/';
+			baseurl = '/weathericons/filled/static/day/';
 			if (animated) {
-				baseurl = '/weathericons/animated/day/';
+				baseurl = '/weathericons/filled/animated/day/';
 				fileext = '.svg';
 			}
 		}
@@ -456,10 +456,10 @@
 	<h1 class="text-lg mb-4 ml-4 font-semibold">{date}</h1>
 	{#each windspeeds as item, index}
 		<div
-			class={'w-full flex flex-col dark:hover:bg-gray-700' +
+			class={'w-full flex flex-col hover:bg-gray-700' +
 				' ' +
-				(!onlyday && (index < 7 || index > 21) ? 'bg-gray-100 dark:bg-gray-800' : '') +
-				(index === hour && day === 0 ? ' bg-blue-50 dark:bg-slate-700' : '')}
+				(!onlyday && (index < 7 || index > 21) ? 'bg-gray-800' : '') +
+				(index === hour && day === 0 ? ' bg-slate-700' : '')}
 		>
 			<div class="h-14 flex w-full items-center">
 				<div class="w-10 ml-4 flex items-center justify-center h-10">
@@ -488,7 +488,7 @@
 				<p class="w-10 mr-3" style="'color:' + picktempcolor(temps[index])">
 					{Math.round(temps[index])}°C
 				</p>
-				<p class="text-blue-800 dark:text-blue-400">
+				<p class="text-blue-400">
 					{precipitation[index].toString().padEnd(3, '.0')}mm
 				</p>
 				<p class="ml-auto mr-4">

@@ -1,8 +1,8 @@
 {
   "name": "Sailing Weather",
   "short_name": "Wetter",
-  "theme_color": "#fff",
-  "background_color": "#fff",
+  "theme_color": "#2a303c",
+  "background_color": "#2a303c",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

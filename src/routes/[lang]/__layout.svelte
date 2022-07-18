@@ -33,7 +33,7 @@
 	/>
 	<meta name="description" content={$t('all.site-description')} />
 </svelte:head>
-<div class="h-full">
+<div data-theme="dark" class="h-full min-h-screen">
 	<header class="navbar bg-base-100">
 		<div class="flex-1">
 			<a href="/" class="btn btn-ghost normal-case text-xl">{$t('all.page-title')}</a>

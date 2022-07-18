@@ -17,6 +17,7 @@
 		"@sveltejs/adapter-auto": "^1.0.0-next.55",
 		"@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.47",
 		"@sveltejs/kit": "next",
+		"@types/tz-lookup": "^6.1.0",
 		"autoprefixer": "^10.4.7",
 		"daisyui": "^2.19.0",
 		"postcss": "^8.4.14",
@@ -29,8 +30,12 @@
 		"tailwindcss": "^3.1.5",
 		"tslib": "^2.4.0",
 		"typescript": "^4.7.4",
-		"vite": "^2.9.14",
+		"tz-lookup": "^6.1.25",
+		"vite": "^3.0.0",
 		"vite-plugin-svelte-console-remover": "^1.0.10"
 	},
-	"type": "module"
+	"type": "module",
+	"peerDependencies": {
+		"vite": "^3.0.0"
+	}
 }

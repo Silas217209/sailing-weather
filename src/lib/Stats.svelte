@@ -310,24 +310,14 @@
 		}
 	};
 
-	function geticon(weathercode: number, night: boolean, animated = false) {
-		let baseurl;
-		let fileext = '.webp';
+	function geticon(weathercode: number, night: boolean, baseurl: string, fileext: string): string {
 		if (night) {
-			baseurl = '/weathericons/static/night/';
-			if (animated) {
-				baseurl = '/weathericons/animated/night/';
-				fileext = '.svg';
-			}
+			baseurl += 'night/';
 		} else {
-			baseurl = '/weathericons/static/day/';
-			if (animated) {
-				baseurl = '/weathericons/animated/day/';
-				fileext = '.svg';
-			}
+			baseurl += 'day/';
 		}
 
-		let icon;
+		let icon: string;
 
 		switch (weathercode) {
 			case 0:
@@ -410,7 +400,8 @@
 						weatherdata.current_weather.weathercode,
 						new Date(weatherdata.current_weather.time).getHours() < 7 ||
 							new Date(weatherdata.current_weather.time).getHours() > 21,
-						true
+						"/weathericons/filled/animated/",
+						".svg"
 					)}
 					alt="Icon to display current Weather"
 				/>

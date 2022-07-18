@@ -17,7 +17,7 @@
 	import Stats from '$lib/Stats.svelte';
 
 	import Forecast from '$lib/Forecast.svelte';
-	import MobileForecast from '$lib/MobileForecast.svelte';
+	import MobileForecast from '$lib/MobileForecastDetails.svelte';
 	import { page } from '$app/stores';
 	import { t } from '$lib/translations';
 
@@ -335,85 +335,7 @@
 		}
 	};
 
-    let width: number
-
-	function geticon(weathercode, night, animated = false) {
-		let baseurl;
-		let fileext = '.webp';
-		if (night) {
-			baseurl = '/weathericons/static/night/';
-			if (animated) {
-				baseurl = '/weathericons/animated/night/';
-				fileext = '.svg';
-			}
-		} else {
-			baseurl = '/weathericons/static/day/';
-			if (animated) {
-				baseurl = '/weathericons/animated/day/';
-				fileext = '.svg';
-			}
-		}
-
-		let icon;
-
-		switch (weathercode) {
-			case 0:
-				icon = 'clear-sky';
-				break;
-			case 1:
-				icon = 'mainly-clear';
-				break;
-			case 2:
-				icon = 'partly-cloudy';
-				break;
-			case 3:
-				icon = 'overcast';
-				break;
-			case 45:
-			case 48:
-				icon = 'fog';
-				break;
-			case 51:
-			case 53:
-			case 55:
-			case 56:
-			case 57:
-				icon = 'drizzle';
-				break;
-			case 61:
-			case 63:
-			case 65:
-			case 66:
-			case 67:
-				icon = 'rain';
-				break;
-			case 71:
-			case 73:
-			case 75:
-			case 77:
-				icon = 'snow';
-				break;
-			case 80:
-			case 81:
-			case 82:
-				icon = 'rain-showers';
-				break;
-			case 85:
-			case 86:
-				icon = 'snow-showers';
-				break;
-			case 95:
-				icon = 'thunderstorm';
-				break;
-			case 96:
-			case 99:
-				icon = 'thunderstorm-hail';
-				break;
-			default:
-				icon = 'clear-sky';
-		}
-		return baseurl + icon + fileext;
-	}
+let width: number
 </script>
 <svelte:window bind:innerWidth={width} />
 
