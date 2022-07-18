@@ -309,13 +309,15 @@
 		}
 	};
 	export let day: number = 1;
+	export const onlyday = true
 
-	let windspeeds: number[] = data.hourly.windspeed_10m.slice(day * 24, 24 * day + 24);
-	let windgusts: number[] = data.hourly.windgusts_10m.slice(day * 24, 24 * day + 24);
-	let weathercodes: number[] = data.hourly.weathercode.slice(day * 24, 24 * day + 24);
-	let winddirs: number[] = data.hourly.winddirection_10m.slice(day * 24, 24 * day + 24);
-	let temps: number[] = data.hourly.temperature_2m.slice(day * 24, 24 * day + 24);
-	let precipitation: number[] = data.hourly.precipitation.slice(day * 24, 24 * day + 24);
+	let windspeeds: number[] = onlyday ? data.hourly.windspeed_10m.slice(day * 24 + 7, 24 * day + 24
+) : data.hourly.windspeed_10m.slice(day * 24, 24 * day + 24);
+	let windgusts: number[] = onlyday ? data.hourly.windgusts_10m.slice(day * 24 + 7, 24 * day + 24) : data.hourly.windgusts_10m.slice(day * 24, 24 * day + 24);
+	let weathercodes: number[] = onlyday ? data.hourly.weathercode.slice(day * 24 + 7, 24 * day + 24) : data.hourly.weathercode.slice(day * 24, 24 * day + 24);
+	let winddirs: number[] = onlyday ? data.hourly.winddirection_10m.slice(day * 24 + 7, 24 * day + 24) : data.hourly.winddirection_10m.slice(day * 24, 24 * day + 24);
+	let temps: number[] = onlyday ? data.hourly.temperature_2m.slice(day * 24 + 7, 24 * day + 24) : data.hourly.temperature_2m.slice(day * 24, 24 * day + 24);
+	let precipitation: number[] = onlyday ? data.hourly.precipitation.slice(day * 24 + 7, 24 * day + 24) : data.hourly.precipitation.slice(day * 24, 24 * day + 24);
 	const dateTime: Date = new Date(data.hourly.time[day * 24]);
 	let hour: number = new Date().getHours();
 	let date: string = dateTime.toLocaleDateString('de-DE', {
@@ -324,7 +326,7 @@
 		month: 'short',
 		day: 'numeric'
 	});
-	let timestamps: string[] = data.hourly.time.slice(day * 24, 24 * day + 24);
+	let timestamps: string[] = onlyday ? data.hourly.time.slice(day * 24 + 7, 24 * day + 24) : data.hourly.time.slice(day * 24, 24 * day + 24);
 
 	function pickcolor(knots: number, style: boolean = true): string | number[] {
 		knots = Math.round(knots);
@@ -364,68 +366,6 @@
 			return [r, g, b];
 		}
 	}
-
-	function luminance(r, g, b) {
-		var a = [r, g, b].map(function (v) {
-			v /= 255;
-			return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
-		});
-		return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
-	}
-
-	function hslToRgb(h, s, l) {
-		var r, g, b;
-
-		if (s == 0) {
-			r = g = b = l; // achromatic
-		} else {
-			var hue2rgb = function hue2rgb(p, q, t) {
-				if (t < 0) t += 1;
-				if (t > 1) t -= 1;
-				if (t < 1 / 6) return p + (q - p) * 6 * t;
-				if (t < 1 / 2) return q;
-				if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
-				return p;
-			};
-
-			var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-			var p = 2 * l - q;
-			r = hue2rgb(p, q, h + 1 / 3);
-			g = hue2rgb(p, q, h);
-			b = hue2rgb(p, q, h - 1 / 3);
-		}
-
-		return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
-	}
-
-	function contrast(rgb1, rgb2) {
-		var lum1 = luminance(rgb1[0], rgb1[1], rgb1[2]);
-		var lum2 = luminance(rgb2[0], rgb2[1], rgb2[2]);
-		var brightest = Math.max(lum1, lum2);
-		var darkest = Math.min(lum1, lum2);
-		return (brightest + 0.05) / (darkest + 0.05);
-	}
-
-	function getfontcolor(rgb: string | number[]): string {
-		var contrastratio = contrast([0, 0, 0], rgb);
-		if (contrastratio > 6) {
-			return 'rgb(0, 0, 0)';
-		} else {
-			return 'rgb(255, 255, 255)';
-		}
-	}
-
-	function picktempcolor(temp: number, style: boolean = true): string | number[] {
-		temp = Math.round(temp);
-
-		var hue = 30 + (240 * (30 - temp)) / 60;
-		if (style) {
-			return `hsl(${hue}, 100%, 50%)`;
-		} else {
-			return hslToRgb(hue, 100, 50);
-		}
-	}
-
 	function getvalue(x: number): number {
 		if (x >= 70) {
 			return 200;
@@ -518,15 +458,15 @@
 		<div
 			class={'w-full flex flex-col dark:hover:bg-gray-700' +
 				' ' +
-				(index < 7 || index > 21 ? 'bg-gray-100 dark:bg-gray-800' : '') +
+				(!onlyday && (index < 7 || index > 21) ? 'bg-gray-100 dark:bg-gray-800' : '') +
 				(index === hour && day === 0 ? ' bg-blue-50 dark:bg-slate-700' : '')}
 		>
 			<div class="h-14 flex w-full items-center">
-				<div class="w-10 ml-4 flex items-center justify-center">
+				<div class="w-10 ml-4 flex items-center justify-center h-10">
 					<img
 						src={geticon(weathercodes[index], index < 7 || index > 21)}
 						alt="Icon to display current Weather"
-						class="weathericon h-full"
+						class="weathericon h-10"
 					/>
 				</div>
 				<img
@@ -573,9 +513,3 @@
 		</div>
 	{/each}
 </div>
-
-<style scoped>
-	.weathericon {
-		max-height: 2rem;
-	}
-</style>
